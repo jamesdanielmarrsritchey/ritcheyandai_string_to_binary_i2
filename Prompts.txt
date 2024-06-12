@@ -1,0 +1,114 @@
+jamesdanielmarrsritchey: ```function stringToDecimal(str, delimiter = " ") {
+    let decimalRepresentation = '';
+    for (let i = 0; i < str.length; i++) {
+        decimalRepresentation += str.charCodeAt(i).toString();
+        if (i < str.length - 1) {
+            switch (delimiter) {
+                case "\\n":
+                    decimalRepresentation += "\n";
+                    break;
+                case "\\t":
+                    decimalRepresentation += "\t";
+                    break;
+                case "":
+                    break;
+                default:
+                    decimalRepresentation += delimiter;
+            }
+        }
+    }
+    return decimalRepresentation;
+}
+
+GitHub Copilot: This JavaScript function, `stringToDecimal`, converts a string into its decimal representation. Here's how it works:
+
+1. It takes two parameters: `str` (the string to be converted) and `delimiter` (the character to be inserted between the decimal values, defaulting to a space).
+
+2. It initializes an empty string `decimalRepresentation` to store the decimal representation of the input string.
+
+3. It then loops over each character in the input string `str`.
+
+4. For each character, it gets the Unicode value using `charCodeAt(i)`, converts it to a string using `toString()`, and appends it to `decimalRepresentation`.
+
+5. If the current character is not the last character in the string, it adds the specified `delimiter` to `decimalRepresentation`. The `delimiter` can be a newline (`\n`), a tab (`\t`), or any other string. If the `delimiter` is an empty string, no additional character is added.
+
+6. Finally, it returns the `decimalRepresentation` string.
+
+For example, if you call `stringToDecimal("AB")`, it will return `"65 66"`, because 65 and 66 are the decimal Unicode values of 'A' and 'B', respectively.
+
+jamesdanielmarrsritchey: Instead of converting to Decimal, convert to Binary. The default delimiter should be "".
+
+GitHub Copilot: Sure, here's the updated function that converts a string to its binary representation with a default delimiter of "":
+
+```javascript
+function stringToBinary(str, delimiter = "") {
+    let binaryRepresentation = '';
+    for (let i = 0; i < str.length; i++) {
+        binaryRepresentation += str.charCodeAt(i).toString(2);
+        if (i < str.length - 1) {
+            binaryRepresentation += delimiter;
+        }
+    }
+    return binaryRepresentation;
+}
+```
+
+This function works similarly to the previous one, but instead of converting each character to its decimal representation, it converts it to its binary representation using `toString(2)`. The delimiter is added between each binary value, but not after the last one.
+
+jamesdanielmarrsritchey: If the delimiter is "\n" it should be treated as a newline. If the delimiter is "\t" it should be treated as a tab.
+
+GitHub Copilot: Sure, here's the updated function that treats "\n" as a newline and "\t" as a tab:
+
+```javascript
+function stringToBinary(str, delimiter = "") {
+    let binaryRepresentation = '';
+    for (let i = 0; i < str.length; i++) {
+        binaryRepresentation += str.charCodeAt(i).toString(2);
+        if (i < str.length - 1) {
+            switch (delimiter) {
+                case "\\n":
+                    binaryRepresentation += "\n";
+                    break;
+                case "\\t":
+                    binaryRepresentation += "\t";
+                    break;
+                default:
+                    binaryRepresentation += delimiter;
+            }
+        }
+    }
+    return binaryRepresentation;
+}
+```
+
+In this updated function, if the `delimiter` is "\n", a newline is added to `binaryRepresentation`. If the `delimiter` is "\t", a tab is added. For any other `delimiter`, the `delimiter` itself is added.
+
+jamesdanielmarrsritchey: The binary representations should always be 8 characters.
+
+GitHub Copilot: Sure, here's the updated function that ensures the binary representation of each character is always 8 bits long:
+
+```javascript
+function stringToBinary(str, delimiter = "") {
+    let binaryRepresentation = '';
+    for (let i = 0; i < str.length; i++) {
+        let binary = str.charCodeAt(i).toString(2);
+        binary = binary.padStart(8, '0');
+        binaryRepresentation += binary;
+        if (i < str.length - 1) {
+            switch (delimiter) {
+                case "\\n":
+                    binaryRepresentation += "\n";
+                    break;
+                case "\\t":
+                    binaryRepresentation += "\t";
+                    break;
+                default:
+                    binaryRepresentation += delimiter;
+            }
+        }
+    }
+    return binaryRepresentation;
+}
+```
+
+In this updated function, `padStart(8, '0')` is used to ensure that the binary representation of each character is always 8 bits long. If the binary representation is less than 8 bits, it is padded with leading zeros.

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Example</title>
+</head>
+<body>
+<div id='output'>Click here to replace with a decimal representation of this text.</div>
+<script src="function.js"></script>
+<script>
+document.querySelector("#output").addEventListener("click", function() {
+    const element = document.querySelector("#output");
+    if (element) {
+        const binaryRepresentation = stringToBinary(element.innerHTML, ",");
+        element.innerHTML = binaryRepresentation;
+    }
+});
+</script>
+</body>
+</html>
